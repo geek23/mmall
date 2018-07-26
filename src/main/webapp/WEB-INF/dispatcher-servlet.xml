@@ -12,7 +12,7 @@
         http://www.springframework.org/schema/mvc/spring-mvc.xsd">
 
 
-    <!-自动扫描controller--->
+
     <context:component-scan base-package="com.mmall" annotation-config="true"/>
 
     <!--验证器-->
@@ -26,10 +26,10 @@
                     </list>
                 </property>
             </bean>
-            <bean class="org.springframework.http.converter.json.MappingJackson2HttpMessageConverter">
+            <bean class="org.springframework.http.converter.json.MappingJacksonHttpMessageConverter">
                 <property name="supportedMediaTypes">
                     <list>
-                        <value>application/json;charset=utf-8</value>
+                        <value>application/json;charset=UTF-8</value>
                     </list>
                 </property>
             </bean>
@@ -42,83 +42,6 @@
         <property name="defaultEncoding" value="UTF-8"/>
 
     </bean>
-
-    <!--
-    <bean id="localeResolver" class="org.springframework.web.servlet.i18n.CookieLocaleResolver">
-        <property name="cookieMaxAge" value="31536000" />
-    </bean>
-    <！-定义映射->
-    <mvc:interceptors>
-        <mvc:interceptor>
-            <mvc:mapping path="/**"/>
-            <mvc:exclude-mapping path="/services/**"/>
-            <mvc:exclude-mapping path="/css/**"/>
-            <mvc:exclude-mapping path="/js/**"/>
-            <mvc:exclude-mapping path="/img/**"/>
-            <mvc:exclude-mapping path="/fonts/**"/>
-            <mvc:exclude-mapping path="/webfile/**"/>
-            <mvc:exclude-mapping path="/theme/**"/>
-            <bean class="org.springframework.web.servlet.i18n.LocaleChangeInterceptor"/>
-        </mvc:interceptor>
-        <mvc:interceptor>
-            <mvc:mapping path="/**"/>
-            <mvc:exclude-mapping path="/services/**"/>
-            <mvc:exclude-mapping path="/css/**"/>
-            <mvc:exclude-mapping path="/js/**"/>
-            <mvc:exclude-mapping path="/img/**"/>
-            <mvc:exclude-mapping path="/fonts/**"/>
-            <mvc:exclude-mapping path="/webfile/**"/>
-            <mvc:exclude-mapping path="/theme/**"/>
-            <bean class="com.zenointel.p2p.web.interceptor.P2PInterceptor"/>
-        </mvc:interceptor>
-    </mvc:interceptors>
-
-    <mvc:resources mapping="/favicon.ico" location="/"/>
-    <mvc:resources mapping="/css/**" location="/css/"/>
-    <mvc:resources mapping="/js/**" location="/js/"/>
-    <mvc:resources mapping="/img/**" location="/img/"/>
-    <mvc:resources mapping="/fonts/**" location="/fonts/"/>
-    <mvc:resources mapping="/theme/**" location="/theme/"/>
-    <!-定义视图（视图解析器）>
-    <bean id="jspViewResolver" class="org.springframework.web.servlet.view.InternalResourceViewResolver">
-        <property name="viewClass" value="org.springframework.web.servlet.view.JstlView"/>
-        <property name="prefix" value="/WEB-INF/jsp/"/>  <！-jsp都放在WEB-INF/jsp目录下->
-        <property name="suffix" value=".jsp"/>    <!-jsp页面的后缀都是.jsp->
-    </bean>
-
-    <bean id="captchaProducer"
-          class="com.google.code.kaptcha.impl.DefaultKaptcha">
-        <property name="config">
-            <bean class="com.google.code.kaptcha.util.Config">
-                <constructor-arg type="java.util.Properties">
-                    <props>
-                        <prop key="kaptcha.image.width">100</prop>
-                        <prop key="kaptcha.image.height">30</prop>
-                        <prop key="kaptcha.textproducer.char.string">0123456789</prop>
-                        <prop key="kaptcha.textproducer.char.length">4</prop>
-                        <prop key="kaptcha.textproducer.font.size">30</prop>
-                        <prop key="kaptcha.textproducer.font.color">black</prop>
-
-                    </props>
-                </constructor-arg>
-            </bean>
-        </property>
-    </bean>
-    -->
-    <!--================ 中文国际化================-->
-    <!--
-    <bean id="messageSource" class="org.springframework.context.support.ReloadableResourceBundleMessageSource">
-        <property name="basename" value="classpath:messageSource"/>
-        <property name="cacheSeconds" value="300"/>
-    </bean>
-
-    <bean id="validtor" class="org.springframework.validation.beanvalidation.LocalValidatorFactoryBean">
-        <property name="validationMessageSource" ref="messageSource"/>
-    </bean>
-    -->
-
-    <!--================ 文件上传================-->
-
 
 
 
